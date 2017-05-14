@@ -4,13 +4,14 @@ env:
     - secure: "eX9m8q/PwU7OgSU3KWNA+LN9cNNyBXAyVQ3G9iod0QawHgndVaEuaU7u6HKcXk2NmcaepckN3y87JfoxyCxpM1cgoScn2dD8Ps7tCnT6zQMwbA/KlvQCjQzfxoLVp3Yb2HLUFJAa7HYDpOGkC97pPKl0dU3drQYXzzybRvijJzcEBkFgbGa52yB9nqJg3UZ7BGQ9RSAuskyz0lRZmKCjGjLDCUkdmg9s5/I3fBruLLC2GMw806FQ6Tg3TXlPpTZB0HTMVLKLL89PT2qcxm3fKXZyPKxYVk0iEdDVsgsPqx+jGQBpsGa8opZR9cKkMWooMdEiWbADw3E8M5+DToAbHHoVu7WPYcu9m6Jwi2dyqeJxbqOJMWK8Pb1EqAi4/NqUvH31xVAOVLfJdBzk62TzRc21RI6Co6TgUMoRnuaw+BtVvC67uFBoukHbdaTbyfxAl3sMLTyw/fAhSrQ06ic6nw35YCSJBxxCx32HsUyz47QRW9YLVmg03ZeihsRE4chZFrkGYoPpl3EGlnhp8LGgJD44+qDyg25p109kTdqR5PxS2QlUBpruAWoaLWcArZ5McJHtC2NxuckL8FJyl6wd0TsfSVK13DCdAnFFHeYGM6lJcUwnLAzQ8ZSFccsvV6zWxZhD5nsigQ0C4J0N2lbdwCQhVoVcO9tOFnu03lSl7rs="
     - secure: "AeyAvLEMmddecOcYdK3hJWeixX4Wt6Wlu82muMKnGoxf51cNxddvwWukw5g2O3/aF16tK3kShIRi2i6A7iJ3C3v2RrtESjI4Ff67pK0UZMRXmtud9PYAqb9hJymJglC2cQFfxjzkbn9bzZSVHtIZLLIC9mlKfykUMgeYgN8JW1L4lJtcqk9BXsZAxE9cUlJ8E55EPZ6bviDbMe+kf/HaH8O0k5fm9N4m8H7F06Vmtb9Yk+mLzdnnh0cNv+tD7zr5Oy9E4exhtoCRydX472tZbGWYGJinL2gd9TsG0o3USffwU8qxZq0DKUVLk1A2bKFnRVgdx8VR2jvk5L5Y7B/OkjXRzhuhckqe598Is0HKtaYwmR4iktXkxdj6qlDfSaVGnqC2EkoYtEvuC+0vwX17tzLdDbGz+GMn81pv5H4LOCYdAUwaQDoz1BO4nS07zTc3YKZn/k2adH3ogVH2qW5TWG9oZQ3zZOfS0ZjsTJYJzXX3ukppgMJq9jhnuOCzMn+kJl1HL/7A/LKKK9/g159KPGYvS3QEPM+/7nJQE/+0odJf3Kq7v1gjaIIsaET61vS8or2F4cyzf9DilhybX+vDcz/ivLmqDqRHMTmuWsGaG9fYMRvm8/HVIIbuNy9jQPxV1gfRV9Kupryv3ve2GbgK22b/5kKf/cCdXw9iogZJiz0="
     - secure: "l4Omu9pBhE10EDMvzKOQQIzkt74DT/DHafW2nxVz8P7hmFKvDGtESFiNiK4T6BvOY+04V8jcfh3O13KcCvmAJFFP3WGupUWWADH5K6SyrhY/8GRrYGRt/DCstHvhJjS9mwYhnyzjqLC0M8NZo0bMmM57WyY8zqvAoJVWsASJSRl4DknNkY3EafxlNjH+4aKga3TmYIFLbPb/NcGpNMEmftIMVwMbbTSj8d9fgkLcc+p4/uvN2aTaEcvneBnO8Cr45GGBNiQrYtzOy3lCEjl1tWn2IYsj2Q4INjpZ+CWy7wU49zBp8eMqzkOREhMONNLKlFTMAlkm7/avX//GFygfuKVQoURuxsvkcQjOEs2/OI+MynejNcsKIg3Hv2gxABBSO3Lehs4Fc2ZmjjrfyiUG9k+CevW/UEZpf81ANCGcm4DlR327Zn8AN5gWHN2Y4ImQc780PA3n6p46gDKdSsaVB5tx0IcsIN9QYJtIXnpWR/1+fhLiIVtotzTJxgNZGwhfKAOBHcajHCwx3fBwUKbJU8tKkq6/h9J2cnbcZEUilnwyfEjQdy1oqsrA+2zFwOP0qbfuFlNHFCYj1LJ5+H8FOA88/681/NGdYBauHg579whHY5szEMtCWUEmw4aqma7YGPQBpasd4lvRTxSe74UGsn8W96cLUn9E2u6BW5ZpP/0="
-    - COMMIT=${TRAVIS_COMMIT::8}
+    # - COMMIT=${TRAVIS_COMMIT::8}
 services:
   - docker
 script:
   - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
   - export REPO=mztn/banshee
-  - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
-  - docker build -f Dockerfile -t $REPO:$COMMIT .
-  - docker tag $REPO:$COMMIT $REPO:$TAG
+#  - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
+  - docker build -f Dockerfile -t $REPO:$TAG .
+#  - docker build -f Dockerfile -t $REPO:$COMMIT .
+#  - docker tag $REPO:$COMMIT $REPO:$TAG
   - docker push $REPO
